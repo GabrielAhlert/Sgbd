@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Consultas;
+package linear;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import models.Candidato;
 
 /**
  *
  * @author Administrador
  */
 public class Linear {
-    ArrayList<Candidato> lista = null;
+    public ArrayList<Candidato> lista = null;
     public long  time;
     
     

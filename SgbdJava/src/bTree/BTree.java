@@ -5,9 +5,7 @@
  */
 package bTree;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.Calendar;
+import models.Candidato;
 
 /**
  *
@@ -15,7 +13,7 @@ import java.util.Calendar;
  */
 public class BTree {
     private class BTreeNode{
-        Candidato[] keys;
+        public Candidato[] keys;
         int t;
         BTreeNode[] c;
         int n;
@@ -121,38 +119,17 @@ public class BTree {
         this.t = t;
     }
     
-    public BTree(int t,int a){
-        this.root = null;
-        this.t = t;
-        
-        Calendar calndr1 = Calendar.getInstance();
-        String row;
-        try{
-            BufferedReader reader = new BufferedReader(new FileReader("src//consulta_cand_2016_RS.csv"));
-            reader.readLine();
-            while((row = reader.readLine())!=null){
-                String[] data = row.split(";");
-                this.insert(new bTree.Candidato(Long.valueOf(data[20].replace("\"", "")),data[17].replace("\"", "")));
-                //System.out.println(new Candidato(Long.valueOf(data[20].replace("\"", "")),data[17].replace("\"", "")));
-                    
-            }
-                
-        }catch(Exception ex){
-            System.out.println(ex); 
-        }
-        Calendar calndr2 = Calendar.getInstance();
-        time = (calndr2.getTimeInMillis()-calndr1.getTimeInMillis());
-    }
+
     
     public void traverse(){
         if(root == null) root.traverse();
     }
     
-    public BTreeNode search(long k){
+    public Candidato[] search(long k){
         if (root == null){
             return null;
         }else{
-            return root.search(k);
+            return root.search(k).keys;
         }
     }
     public void insert (Candidato c){
@@ -168,8 +145,12 @@ public class BTree {
                 s.splitChild(0,root);
                 
                 int i = 0; 
-                if (s.keys[0].getCpf() < c.getCpf()) 
-                    i++; 
+                try{
+                    if (s.keys[0].getCpf() < c.getCpf()) 
+                        i++;
+                }catch(Exception ex){
+                    
+                }
                 s.c[i].insertNonFull(c);
                 
                 root = s;

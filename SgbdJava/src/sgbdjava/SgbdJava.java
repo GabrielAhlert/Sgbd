@@ -5,8 +5,7 @@
  */
 package sgbdjava;
 
-import static Consultas.ArvoreB.Arvore;
-import Consultas.Linear;
+import linear.Linear;
 import bTree.BTree;
 
 /**
@@ -19,9 +18,23 @@ public class SgbdJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Linear linear = new Linear();
+        Linear l = new Linear();
         //System.out.println(linear.buscar(97844667088L));
-        BTree b = Arvore();
+        
+      
+        BTree b = new BTree(2);
+        
+        b.insert(l.lista.get(0));
+        System.out.println(l.lista.get(0));
+        System.out.println(b.search(78311454000l)[0]);
+        
+        b.insert(l.lista.get(1));
+        b.insert(l.lista.get(2));
+        b.insert(l.lista.get(3));
+        b.insert(l.lista.get(4));
+        
+        
+        
         
     }
     
