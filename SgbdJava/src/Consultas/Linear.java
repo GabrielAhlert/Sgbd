@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package linear;
+package Consultas;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -25,18 +25,18 @@ public class Linear {
         this.lista = new ArrayList<>();
         String row;
         try{
-                BufferedReader reader = new BufferedReader(new FileReader("src//consulta_cand_2016_RS.csv"));
-                reader.readLine();
-                while((row = reader.readLine())!=null){
-                    String[] data = row.split(";");
-                    lista.add(new Candidato(Long.valueOf(data[20].replace("\"", "")),data[17].replace("\"", "")));
-                    //System.out.println(new Candidato(Long.valueOf(data[20].replace("\"", "")),data[17].replace("\"", "")));
+            BufferedReader reader = new BufferedReader(new FileReader("src//consulta_cand_2016_RS.csv"));
+            reader.readLine();
+            while((row = reader.readLine())!=null){
+                String[] data = row.split(";");
+                lista.add(new Candidato(Long.valueOf(data[20].replace("\"", "")),data[17].replace("\"", "")));
+                //System.out.println(new Candidato(Long.valueOf(data[20].replace("\"", "")),data[17].replace("\"", "")));
                     
-                }
+            }
                 
-                }catch(Exception ex){
-                   System.out.println(ex); 
-                }
+        }catch(Exception ex){
+            System.out.println(ex); 
+        }
         Calendar calndr2 = Calendar.getInstance();
         time = (calndr2.getTimeInMillis()-calndr1.getTimeInMillis());
     }
