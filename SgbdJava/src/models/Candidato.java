@@ -5,7 +5,6 @@
  */
 package models;
 
-import bTree.*;
 
 
 
@@ -16,7 +15,8 @@ import bTree.*;
 public class Candidato {
     private long cpf;
     private String nome;
-
+    public int temp;
+    
     public Candidato(long cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
