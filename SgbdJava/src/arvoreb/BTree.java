@@ -69,13 +69,13 @@ public class BTree {
     }
     
     public String buscar(long k){
-        Calendar calndr1 = Calendar.getInstance();
+        long calndr1 = System.nanoTime();
         Candidato c = this.search(k);
-        Calendar calndr2 = Calendar.getInstance();
+        long calndr2 = System.nanoTime();
         if(c != null){
-            return "Nome: "+c.getNome()+"  Pesquisas: "+(c.temp)+"  Tempo de Carregamento: "+time+" ms  Tempo de Busca: "+(calndr2.getTimeInMillis()-calndr1.getTimeInMillis())+" ms";
+            return "Nome: "+c.getNome()+"  Pesquisas: "+(c.temp)+"  Tempo de Carregamento: "+time+" ms  Tempo de Busca: "+(calndr2-calndr1)+" ns";
         }else{
-            return "Não Encontrado!"+"  Tempo de Carregamento: "+time+" ms  Tempo de Busca: "+(calndr2.getTimeInMillis()-calndr1.getTimeInMillis())+" ms";
+            return "Não Encontrado!"+"  Tempo de Carregamento: "+time+" ms  Tempo de Busca: "+(calndr2-calndr1)+" ns";
         }
 
     }

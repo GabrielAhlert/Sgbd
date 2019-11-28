@@ -42,19 +42,19 @@ public class Linear {
     }
     
     public String buscar(long cpf){
-        Calendar calndr1 = Calendar.getInstance();
+        long calndr1 = System.nanoTime();
         int i = 0;
         try{
             while (lista.get(i).getCpf()!=cpf){
                 i++;
             }
             if (lista.get(i).getCpf() == cpf){
-                Calendar calndr2 = Calendar.getInstance();
-                return "Nome: "+lista.get(i).getNome()+"  Pesquisas: "+(i+1)+"  Tempo de Carregamento: "+time+" ms  Tempo de Busca: "+(calndr2.getTimeInMillis()-calndr1.getTimeInMillis())+" ms";
+                long calndr2 = System.nanoTime();
+                return "Nome: "+lista.get(i).getNome()+"  Pesquisas: "+(i+1)+"  Tempo de Carregamento: "+time+" ms  Tempo de Busca: "+(calndr2-calndr1)+" ns";
             }
         }catch(IndexOutOfBoundsException ex){
-            Calendar calndr2 = Calendar.getInstance();
-            return "Não Encontrado!"+"  Pesquisas: "+(i+1)+"  Tempo de Carregamento: "+time+" ms  Tempo de Busca: "+(calndr2.getTimeInMillis()-calndr1.getTimeInMillis())+" ms";
+            long calndr2 = System.nanoTime();;
+            return "Não Encontrado!"+"  Pesquisas: "+(i+1)+"  Tempo de Carregamento: "+time+" ms  Tempo de Busca: "+(calndr2-calndr1)+" ns";
         }
         return null;
     }
